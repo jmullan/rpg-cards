@@ -92,7 +92,7 @@
 
 .card-title {
     height: 8mm;
-    padding-left: 2mm;
+    padding-left: 0;
     font-family: Lora, 'Calisto MT', 'Bookman Old Style', Bookman, 'Goudy Old Style', Garamond, 'Hoefler Text', 'Bitstream Charter', Georgia, serif;
     font-variant: small-caps;
     font-weight: bold;
@@ -128,11 +128,14 @@
     line-height: 7.5mm;
 }
 .card-subtitle {
+    overflow: hidden;
     height: 18px;
     margin-bottom: 0.0em;
+    margin-right: 0.0em;
+    padding-right: 0.0em;
     line-height: 18px;
     font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
-    font-size: 10pt;
+    font-size: 9.5pt;
     font-style: italic;
 }
 .card-picture {

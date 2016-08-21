@@ -33,7 +33,7 @@ function merge(left, right, compare) {
     return result;
 }
 
-var ui_generate_modal_shown = false;
+var ui_generate_modal_shown = true;
 function ui_generate() {
     if (card_data.length == 0) {
         alert("Your deck is empty. Please define some cards first, or load the sample deck.");
@@ -222,7 +222,7 @@ function ui_setup_color_selector() {
             .attr("data-color", val)
             .text(name));
     });
-    
+
     // Callbacks for when the user picks a color
     $('#default_color_selector').colorselector({
         callback: function (value, color, title) {
@@ -429,6 +429,15 @@ function ui_apply_default_icon_back() {
     ui_render_selected_card();
 }
 
+var option_fields = [
+    "page-size",
+    "page-rows",
+    "page-columns",
+    "card-arrangement",
+    "card-size",
+    "background-color"
+];
+
 $(document).ready(function () {
     ui_setup_color_selector();
     $('.icon-list').typeahead({source:icon_names});
@@ -461,6 +470,12 @@ $(document).ready(function () {
     $("#card-contents").change(ui_change_card_contents);
     $("#card-tags").change(ui_change_card_tags);
 
+    $.each(option_fields, function(index, value) {
+        var selector = '#' + value;
+        $(selector).change(ui_change_option);
+        $(selector).change();
+    });
+
     $("#page-size").change(ui_change_option);
     $("#page-rows").change(ui_change_option);
     $("#page-columns").change(ui_change_option);
@@ -477,9 +492,6 @@ $(document).ready(function () {
 
     $("#sort-execute").click(ui_sort_execute);
     $("#filter-execute").click(ui_filter_execute);
-    
+
     ui_update_card_list();
 });
-
-
-
